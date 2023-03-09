@@ -11,6 +11,15 @@ let form = document.getElementById("form");
 const validation = (event) => {
     event.preventDefault();
 
+    errorname.textContent = ""
+    errorlastname.textContent = ""
+    erroremail.textContent = ""
+    errorcenter.textContent = ""
+    errorcourse.textContent = ""
+    errorpassword.textContent = ""
+    errorrepeatpassword.textContent = ""
+
+
     let valido = true;
 
     if (inputName.validity.valueMissing) {
@@ -51,6 +60,12 @@ const validation = (event) => {
 
     if (inputRepeatPassword.validity.valueMissing) {
         errorrepeatpassword.textContent = "El campo es requerido";
+
+        valido = false;
+    }
+
+    if (valido && inputRepeatPassword.value != inputPassword.value) {
+        errorrepeatpassword.textContent = "Las contraseñas no coinciden";
 
         valido = false;
     }
